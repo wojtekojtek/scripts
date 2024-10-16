@@ -1,3 +1,4 @@
+ls
 echo " "
 echo ---------- CLONING TREES ----------
 echo " "
@@ -11,11 +12,18 @@ rm -rf vendor/samsung/a52q
 git clone https://github.com/TheMuppets/proprietary_vendor_samsung_a52q vendor/samsung/a52q -b lineage-21
 rm -rf vendor/samsung/sm7125-common
 git clone https://github.com/TheMuppets/proprietary_vendor_samsung_sm7125-common vendor/samsung/sm7125-common -b lineage-21
+cd hardware/samsung
+mv nfc ..
+cd ../..
 rm -rf hardware/samsung
-git clone https://github.com/Lineageos/android_hardware_samsung hardware/samsung -b lineage-21 && cd vendor/support/res/values
+git clone https://github.com/Lineageos/android_hardware_samsung hardware/samsung -b lineage-21
+cd hardware
+mv nfc samsung/
+cd ..
 echo " "
 echo ---------- PATCH ATTRS.XML -------------
 echo " "
+cd vendor/support/res/values
 rm -rf attrs.xml
 curl https://pastebin.com/raw/aCi9YAvL --output attrs.xml
 cd ../../../..
