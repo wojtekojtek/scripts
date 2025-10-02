@@ -11,3 +11,6 @@ curl https://raw.githubusercontent.com/wojtekojtek/crave-building/refs/heads/mai
 
 `a13ve` - Samsung Galaxy A13 4G (SM-A137F)
 - lineageos: work in progress ⚠️
+```
+curl https://raw.githubusercontent.com/wojtekojtek/scripts/refs/heads/main/a13ve/lineage/build_lineage.sh | bash
+```
