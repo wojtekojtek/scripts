@@ -17,7 +17,7 @@ rm -rf prebuilts/clang/host/linux-x86/clang-r383902
 echo "-> Cloning trees"
 git clone https://github.com/wojtekojtek/device_samsung_a13ve -b lineage-21-a13ve-1 device/samsung/a13ve
 git clone https://github.com/wojtekojtek/device_samsung_a13ve-kernel device/samsung/a13ve-kernel
-git clone https://github.com/physwizz/A137f-U-u6-u8 kernel/samsung/a13ve
+git clone https://github.com/wojtekojtek/A137f kernel/samsung/a13ve
 git clone https://github.com/wojtekojtek/android_vendor_samsung_a13ve_1 -b a13ve_a32 vendor/samsung/a13ve
 git clone https://github.com/LineageOS/android_hardware_samsung -b lineage-21 hardware/samsung
 git clone https://github.com/LineageOS/android_hardware_samsung_nfc -b lineage-21.0 hardware/samsung/nfc
