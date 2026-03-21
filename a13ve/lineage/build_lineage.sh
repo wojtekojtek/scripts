@@ -2,7 +2,7 @@
 # Build LineageOS for a13ve (Samsung A13 4G)
 
 # Clean
-echo "-> Cleaning"
+echo "-> Cleaning up"
 rm -rf out
 rm -rf device/samsung/a13ve
 rm -rf device/samsung/a13ve-kernel
