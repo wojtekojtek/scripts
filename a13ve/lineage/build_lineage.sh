@@ -28,5 +28,5 @@ git clone https://github.com/A325F/android_prebuilts_clang_host_linux-x86_clang-
 # Build
 echo "-> Build started!"
 source build/envsetup.sh
-croot
-brunch a13ve
+lunch lineage_a13ve-eng
+mka bacon
