@@ -4,6 +4,9 @@ set -e
 WORK_DIR="/tmp/src/android"
 MK="device/samsung/a52q/voltage_a52q.mk"
 
+echo "debug - cleanup"
+rm -rf device/samsung/a52q device/samsung/sm7125-common kernel/samsung/sm7125 vendor/samsung/sm7125-common vendor/samsung/a52q hardware/samsung-ext/interfaces
+
 repo init -u https://github.com/VoltageOS/manifest.git -b 16.2 --git-lfs --no-clone-bundle
 echo "debug - syncing"
 /opt/crave/resync.sh
@@ -20,7 +23,9 @@ git clone https://github.com/crdroidandroid/android_device_samsung_sm7125-common
 git clone https://github.com/crdroidandroid/android_kernel_samsung_sm7125 kernel/samsung/sm7125
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_sm7125-common vendor/samsung/sm7125-common
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_a52q vendor/samsung/a52q
-git clone https://github.com/crdroidandroid/android_hardware_samsung hardware/samsung
+if [ -e "hardware/samsung/ ]; then
+  git clone https://github.com/crdroidandroid/android_hardware_samsung hardware/samsung
+fi
 git clone https://github.com/crdroidandroid/hardware_samsung-extra_interfaces hardware/samsung-ext/interfaces
 
 echo "debug - restore backup"
