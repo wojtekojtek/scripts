@@ -23,15 +23,15 @@ git clone https://github.com/crdroidandroid/android_device_samsung_sm7125-common
 git clone https://github.com/crdroidandroid/android_kernel_samsung_sm7125 kernel/samsung/sm7125
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_sm7125-common vendor/samsung/sm7125-common
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_a52q vendor/samsung/a52q
-if [ -e "hardware/samsung/ ]; then
+if [ -e "tmp" ]; then # always true?
+  rm -rf hardware/samsung
   echo "debug - cloning hardware samsung $(pwd)"
   git clone https://github.com/crdroidandroid/android_hardware_samsung hardware/samsung
 fi
 git clone https://github.com/crdroidandroid/hardware_samsung-extra_interfaces hardware/samsung-ext/interfaces
 
 echo "debug - restore backup $(pwd)"
-mv tmp/* hardware/samsung/
-rm -r tmp
+cp tmp/* hardware/samsung/ -r
 
 echo "debug - patching device tree $(pwd)"
 sed -i 's/lineage/voltage/g' device/samsung/a52q/AndroidProducts.mk
