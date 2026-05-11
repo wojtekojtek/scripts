@@ -44,17 +44,26 @@ grep -q 'TORCH_STR_SUPPORTED'          "$MK" || echo 'TORCH_STR_SUPPORTED := tru
 
 echo "debug - keys $(pwd)"
 rm -rf vendor/voltage-priv/keys
+echo "1 $(pwd)"
 git clone https://github.com/VoltageOS/vendor_voltage-priv_keys vendor/voltage-priv/keys
+echo "2 $(pwd)"
 cd vendor/voltage-priv/keys
+echo "3 $(pwd)"
 bash keys.sh
+echo "4 $(pwd)"
 cd "$WORK_DIR"
+echo "5 $(pwd)"
 touch .keys_generated
+echo "6 $(pwd)"
 
 echo "debug - apply tee workaround $(pwd)"
+echo "7 $(pwd)"
 mkdir -p system/sepolicy/private
+echo "8 $(pwd)"
 grep -q 'allow tee gatekeeper_vendor_data_file:dir' system/sepolicy/private/tee.te 2>/dev/null || \
     printf '\nallow tee gatekeeper_vendor_data_file:dir rw_dir_perms;\nallow tee gatekeeper_vendor_data_file:file create_file_perms;\n' \
     >> system/sepolicy/private/tee.te
+echo "9 $(pwd)"
 
 echo "debug - add maintainer string $(pwd)"
 OVERLAY_DIR="device/samsung/a52q/overlay-voltage/packages/apps/Settings/res/values"
