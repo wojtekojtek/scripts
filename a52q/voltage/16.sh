@@ -36,11 +36,21 @@ sed -i 's/lineage/voltage/g' device/samsung/a52q/AndroidProducts.mk
 mv device/samsung/a52q/lineage_a52q.mk "$MK"
 sed -i 's/lineage/voltage/g' "$MK"
 
-grep -q 'TARGET_BOOT_ANIMATION_RES'    "$MK" || echo 'TARGET_BOOT_ANIMATION_RES := 1080'      >> "$MK"
-grep -q 'TARGET_FACE_UNLOCK_SUPPORTED' "$MK" || echo 'TARGET_FACE_UNLOCK_SUPPORTED := true'   >> "$MK"
-grep -q 'TARGET_ENABLE_BLUR'           "$MK" || echo 'TARGET_ENABLE_BLUR := true'             >> "$MK"
-grep -q 'EXTRA_UDFPS_ANIMATIONS'       "$MK" || echo 'EXTRA_UDFPS_ANIMATIONS := true'         >> "$MK"
-grep -q 'TORCH_STR_SUPPORTED'          "$MK" || echo 'TORCH_STR_SUPPORTED := true'            >> "$MK"
+if ! grep -q 'TARGET_BOOT_ANIMATION_RES' "$MK"; then
+    echo 'TARGET_BOOT_ANIMATION_RES := 1080' >> "$MK"
+fi
+if ! grep -q 'TARGET_FACE_UNLOCK_SUPPORTED' "$MK"; then
+    echo 'TARGET_FACE_UNLOCK_SUPPORTED := true' >> "$MK"
+fi
+if ! grep -q 'TARGET_ENABLE_BLUR' "$MK"; then
+    echo 'TARGET_ENABLE_BLUR := true' >> "$MK"
+fi
+if ! grep -q 'EXTRA_UDFPS_ANIMATIONS' "$MK"; then
+    echo 'EXTRA_UDFPS_ANIMATIONS := true' >> "$MK"
+fi
+if ! grep -q 'TORCH_STR_SUPPORTED' "$MK"; then
+    echo 'TORCH_STR_SUPPORTED := true' >> "$MK"
+fi
 
 echo "debug - keys $(pwd)"
 rm -rf vendor/voltage-priv/keys
@@ -49,7 +59,7 @@ git clone https://github.com/VoltageOS/vendor_voltage-priv_keys vendor/voltage-p
 echo "2 $(pwd)"
 cd vendor/voltage-priv/keys
 echo "3 $(pwd)"
-bash keys.sh
+bash keys.sh || true
 echo "4 $(pwd)"
 cd "$WORK_DIR"
 echo "5 $(pwd)"
@@ -60,16 +70,18 @@ echo "debug - apply tee workaround $(pwd)"
 echo "7 $(pwd)"
 mkdir -p system/sepolicy/private
 echo "8 $(pwd)"
-grep -q 'allow tee gatekeeper_vendor_data_file:dir' system/sepolicy/private/tee.te 2>/dev/null || \
-    printf '\nallow tee gatekeeper_vendor_data_file:dir rw_dir_perms;\nallow tee gatekeeper_vendor_data_file:file create_file_perms;\n' \
-    >> system/sepolicy/private/tee.te
+if ! grep -q 'allow tee gatekeeper_vendor_data_file:dir' system/sepolicy/private/tee.te 2>/dev/null; then
+    printf '\nallow tee gatekeeper_vendor_data_file:dir rw_dir_perms;\nallow tee gatekeeper_vendor_data_file:file create_file_perms;\n' >> system/sepolicy/private/tee.te
+fi
 echo "9 $(pwd)"
 
 echo "debug - add maintainer string $(pwd)"
 OVERLAY_DIR="device/samsung/a52q/overlay-voltage/packages/apps/Settings/res/values"
 mkdir -p "$OVERLAY_DIR"
-[ -f "$OVERLAY_DIR/voltage_strings.xml" ] || printf '<?xml version="1.0" encoding="utf-8"?>\n<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">\n    <string name="voltage_maintainer">wojtekojtek</string>\n</resources>\n' \
-    > "$OVERLAY_DIR/voltage_strings.xml"
+if [ ! -f "$OVERLAY_DIR/voltage_strings.xml" ]; then
+    printf '<?xml version="1.0" encoding="utf-8"?>\n<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">\n    <string name="voltage_maintainer">wojtekojtek</string>\n</resources>\n' \
+        > "$OVERLAY_DIR/voltage_strings.xml"
+fi
 
 echo "debug - build $(pwd)"
 source build/envsetup.sh
