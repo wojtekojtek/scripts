@@ -8,7 +8,7 @@ echo "debug - cleanup $(pwd)"
 rm -rf device/samsung/a52q device/samsung/sm7125-common kernel/samsung/sm7125 vendor/samsung/sm7125-common vendor/samsung/a52q hardware/samsung-ext/interfaces
 
 repo init -u https://github.com/VoltageOS/manifest.git -b 16.2 --git-lfs --no-clone-bundle
-echo "debug - syncing"
+echo "debug - syncing $(pwd)"
 /opt/crave/resync.sh
 
 if [ ! -d tmp ]; then
@@ -23,15 +23,13 @@ git clone https://github.com/crdroidandroid/android_device_samsung_sm7125-common
 git clone https://github.com/crdroidandroid/android_kernel_samsung_sm7125 kernel/samsung/sm7125
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_sm7125-common vendor/samsung/sm7125-common
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_a52q vendor/samsung/a52q
-if [ -e "tmp" ]; then # always true?
-  rm -rf hardware/samsung
-  echo "debug - cloning hardware samsung $(pwd)"
-  git clone https://github.com/crdroidandroid/android_hardware_samsung hardware/samsung
-fi
+rm -rf hardware/samsung
+echo "debug - cloning hardware samsung $(pwd)"
+git clone https://github.com/crdroidandroid/android_hardware_samsung hardware/samsung
 git clone https://github.com/crdroidandroid/hardware_samsung-extra_interfaces hardware/samsung-ext/interfaces
 
 echo "debug - restore backup $(pwd)"
-cp tmp/* hardware/samsung/ -r
+cp -r tmp/* hardware/samsung/
 
 echo "debug - patching device tree $(pwd)"
 sed -i 's/lineage/voltage/g' device/samsung/a52q/AndroidProducts.mk
@@ -46,27 +44,17 @@ grep -q 'TORCH_STR_SUPPORTED'          "$MK" || echo 'TORCH_STR_SUPPORTED := tru
 
 echo "debug - keys $(pwd)"
 rm -rf vendor/voltage-priv/keys
-echo 1
 git clone https://github.com/VoltageOS/vendor_voltage-priv_keys vendor/voltage-priv/keys
-echo 2
 cd vendor/voltage-priv/keys
-echo 3
 bash keys.sh
-echo 4
 cd "$WORK_DIR"
-echo 5
-
 touch .keys_generated
-echo 6
 
 echo "debug - apply tee workaround $(pwd)"
-echo 7
 mkdir -p system/sepolicy/private
-echo 8
 grep -q 'allow tee gatekeeper_vendor_data_file:dir' system/sepolicy/private/tee.te 2>/dev/null || \
     printf '\nallow tee gatekeeper_vendor_data_file:dir rw_dir_perms;\nallow tee gatekeeper_vendor_data_file:file create_file_perms;\n' \
     >> system/sepolicy/private/tee.te
-echo 9
 
 echo "debug - add maintainer string $(pwd)"
 OVERLAY_DIR="device/samsung/a52q/overlay-voltage/packages/apps/Settings/res/values"
