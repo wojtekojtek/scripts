@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set +e
 
 WORK_DIR="/tmp/src/android"
 MK="device/samsung/a52q/voltage_a52q.mk"
