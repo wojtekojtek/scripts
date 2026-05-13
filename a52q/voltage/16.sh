@@ -30,6 +30,7 @@ git clone https://github.com/crdroidandroid/hardware_samsung-extra_interfaces ha
 
 echo "debug - restore backup $(pwd)"
 cp -r tmp/* hardware/samsung/
+rm -rf tmp
 
 echo "debug - patching device tree $(pwd)"
 sed -i 's/lineage/voltage/g' device/samsung/a52q/AndroidProducts.mk
