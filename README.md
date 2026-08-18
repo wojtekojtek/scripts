@@ -10,6 +10,11 @@ curl https://raw.githubusercontent.com/wojtekojtek/crave-building/refs/heads/mai
 curl https://raw.githubusercontent.com/wojtekojtek/scripts/refs/heads/main/a52q/voltage/16.sh | bash
 ```
 
+- halcyon
+```
+curl https://raw.githubusercontent.com/wojtekojtek/scripts/refs/heads/main/a52q/halcyon/16.sh | bash
+```
+
 ---
 
 `a13ve` - Samsung Galaxy A13 4G (SM-A137F)
