@@ -35,8 +35,8 @@ rm -rf tmp
 echo "debug - patching device tree $(pwd)"
 sed -i 's/lineage/halcyon/g' device/samsung/a52q/AndroidProducts.mk
 mv device/samsung/a52q/lineage_a52q.mk "$MK"
-sed -i 's/lineage/halcyon/g' "$MK"
-sed -i 's|device/lineage/sepolicy/libperfmgr/sepolicy.mk|device/halcyon/sepolicy/libperfmgr/sepolicy.mk|g' device/samsung/sm7125-common/BoardConfigCommon.mk
+sed -i 's/lineage_a52q/halcyon_a52q/g' "$MK"
+#sed -i 's|device/lineage/sepolicy/libperfmgr/sepolicy.mk|device/halcyon/sepolicy/libperfmgr/sepolicy.mk|g' device/samsung/sm7125-common/BoardConfigCommon.mk
 
 if ! grep -q 'TARGET_BOOT_ANIMATION_RES' "$MK"; then
     echo 'TARGET_BOOT_ANIMATION_RES := 1080' >> "$MK"
