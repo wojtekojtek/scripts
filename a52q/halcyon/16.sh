@@ -7,7 +7,7 @@ MK="device/samsung/a52q/halcyon_a52q.mk"
 echo "debug - cleanup $(pwd)"
 rm -rf device/samsung/a52q device/samsung/sm7125-common kernel/samsung/sm7125 vendor/samsung/sm7125-common vendor/samsung/a52q hardware/samsung-ext/interfaces
 
-repo init -u https://github.com/halcyonproject/manifest -b 16.2 dddvddddddddddhdhdhhdhdhds
+repo init -u https://github.com/halcyonproject/manifest -b 16.0
 echo "debug - syncing $(pwd)"
 /opt/crave/resync.sh
 
@@ -56,5 +56,5 @@ fi
 
 echo "debug - build $(pwd)"
 source build/envsetup.sh
-lunch halcyon_a52q-bp4a-userdebug
+lunch halcyon_a52q-bp2a-userdebug
 mka carthage
