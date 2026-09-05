@@ -7,6 +7,12 @@ MK="device/samsung/a52q/lineage_a52q.mk"
 echo "debug - cleanup $(pwd)"
 rm -rf device/samsung/a52q device/samsung/sm7125-common kernel/samsung/sm7125 vendor/samsung/sm7125-common vendor/samsung/a52q hardware/samsung-ext/interfaces
 
+if [ ! -e no_rmrf_out ]
+  echo Removing out
+  rm -rf out
+  touch no_rmrf_out
+fi
+
 repo init -u https://github.com/AxionAOSP/android.git -b lineage-23.2 --git-lfs
 echo "debug - syncing $(pwd)"
 /opt/crave/resync.sh
