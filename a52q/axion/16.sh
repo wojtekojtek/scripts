@@ -38,6 +38,11 @@ echo "debug - restore backup $(pwd)"
 cp -r tmp/* hardware/samsung/
 rm -rf tmp
 
+echo "debug - copy libion from lineage24"
+git clone https://github.com/LineageOS/android_device_lineage_sepolicy.git -b lineage-24.0 libion_fix
+mv libion_fix/libion device/lineage/sepolicy/
+rm -rf libion_fix
+
 echo "debug - build $(pwd)"
 source build/envsetup.sh
 gk -s
