@@ -40,7 +40,7 @@ rm -rf tmp
 
 echo "debug - copy libion from lineage24"
 rm -rf device/lineage/sepolicy
-git clone https://github.com/LineageOS/android_device_lineage_sepolicy.git -b lineage-23.0 libion_fix
+git clone https://github.com/LineageOS/android_device_lineage_sepolicy.git -b lineage-23.2 libion_fix
 mv libion_fix/libion device/lineage/sepolicy/
 rm -rf libion_fix
 
