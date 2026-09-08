@@ -41,7 +41,7 @@ rm -rf tmp
 echo "debug - copy libion from lineage24"
 rm -rf device/lineage/sepolicy
 git clone https://github.com/LineageOS/android_device_lineage_sepolicy.git -b lineage-23.2 libion_fix
-mv libion_fix/libion device/lineage/sepolicy/
+mv libion_fix device/lineage/sepolicy
 rm -rf libion_fix
 
 sed -i '\|$(call soong_config_set_bool,libion,legacy_impl,true)|d' device/samsung/sm7125-common/common.mk && \
