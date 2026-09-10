@@ -9,6 +9,9 @@ curl https://raw.githubusercontent.com/wojtekojtek/crave-building/refs/heads/mai
 ```
 curl https://raw.githubusercontent.com/wojtekojtek/scripts/refs/heads/main/a52q/voltage/16.sh | bash
 ```
+```
+curl https://raw.githubusercontent.com/wojtekojtek/scripts/refs/heads/main/a52q/voltage/17.sh | bash
+```
 
 - halcyon
 ```
