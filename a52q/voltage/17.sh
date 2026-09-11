@@ -7,7 +7,7 @@ MK="device/samsung/a52q/voltage_a52q.mk"
 echo "debug - cleanup $(pwd)"
 rm -rf device/samsung/a52q device/samsung/sm7125-common kernel/samsung/sm7125 vendor/samsung/sm7125-common vendor/samsung/a52q hardware/samsung-ext/interfaces
 
-repo init -u https://github.com/VoltageOS/manifest.git -b 16.2 --git-lfs --no-clone-bundle
+repo init -u https://github.com/VoltageOS/manifest.git -b 17 --git-lfs --no-clone-bundle
 echo "debug - syncing $(pwd)"
 /opt/crave/resync.sh
 
