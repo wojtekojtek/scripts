@@ -19,8 +19,8 @@ fi
 
 echo "debug - trees $(pwd)"
 git clone https://github.com/crdroidandroid/android_device_samsung_a52q device/samsung/a52q
-git clone https://github.com/crdroidandroid/android_device_samsung_sm7125-common device/samsung/sm7125-common
-git clone https://github.com/crdroidandroid/android_kernel_samsung_sm7125 kernel/samsung/sm7125
+git clone https://github.com/matei9/android_device_samsung_sm7125-common device/samsung/sm7125-common
+git clone https://github.com/matei9/android_kernel_samsung_sm7125 kernel/samsung/sm7125
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_sm7125-common vendor/samsung/sm7125-common
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_a52q vendor/samsung/a52q
 rm -rf hardware/samsung
