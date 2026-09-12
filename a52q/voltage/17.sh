@@ -25,8 +25,8 @@ git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_sm7125-co
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_a52q vendor/samsung/a52q
 rm -rf hardware/samsung
 echo "debug - cloning hardware samsung $(pwd)"
-git clone https://github.com/crdroidandroid/android_hardware_samsung hardware/samsung
-git clone https://github.com/crdroidandroid/hardware_samsung-extra_interfaces hardware/samsung-ext/interfaces
+git clone https://github.com/LineageOS/android_hardware_samsung hardware/samsung -b lineage-24.0
+git clone https://github.com/LineageOS/hardware_samsung-extra_interfaces hardware/samsung-ext/interfaces -b lineage-24.0
 
 echo "debug - restore backup $(pwd)"
 cp -r tmp/* hardware/samsung/
