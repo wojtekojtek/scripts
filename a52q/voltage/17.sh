@@ -37,6 +37,7 @@ sed -i 's/lineage/voltage/g' device/samsung/a52q/AndroidProducts.mk
 mv device/samsung/a52q/lineage_a52q.mk "$MK"
 sed -i 's/lineage/voltage/g' "$MK"
 sed -i 's|device/lineage/sepolicy/libperfmgr/sepolicy.mk|device/voltage/sepolicy/libperfmgr/sepolicy.mk|g' device/samsung/sm7125-common/BoardConfigCommon.mk
+sed -i 's#include device/lineage/sepolicy/libion/sepolicy.mk#include device/voltage/sepolicy/libion/sepolicy.mk#' device/samsung/sm7125-common/BoardConfigCommon.mk || true
 
 if ! grep -q 'TARGET_BOOT_ANIMATION_RES' "$MK"; then
     echo 'TARGET_BOOT_ANIMATION_RES := 1080' >> "$MK"
