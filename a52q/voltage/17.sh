@@ -4,6 +4,9 @@ set +e
 WORK_DIR="/tmp/src/android"
 MK="device/samsung/a52q/voltage_a52q.mk"
 
+echo "-----"
+free -h
+echo "-----"
 echo "debug - cleanup $(pwd)"
 rm -rf device/samsung/a52q device/samsung/sm7125-common kernel/samsung/sm7125 vendor/samsung/sm7125-common vendor/samsung/a52q hardware/samsung-ext/interfaces
 
