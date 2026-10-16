@@ -14,6 +14,16 @@ repo init -u https://github.com/VoltageOS/manifest.git -b 17 --git-lfs --no-clon
 echo "debug - syncing $(pwd)"
 /opt/crave/resync.sh
 
+cd build/soong
+
+git fetch https://github.com/PixelOS-AOSP/android_build_soong 173bd39389e5d1d91b27db80000f3479dbaf7add
+git cherry-pick 173bd39389e5d1d91b27db80000f3479dbaf7add
+
+git fetch https://github.com/15168142/build_soong-pos b299e2b78014e79edbf017db5beb28e995ec0a80
+git cherry-pick b299e2b78014e79edbf017db5beb28e995ec0a80
+
+cd ../..
+
 if [ ! -d tmp ]; then
     echo "debug - creating nfc backup $(pwd)"
     mkdir tmp
