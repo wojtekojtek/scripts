@@ -16,11 +16,11 @@ echo "debug - syncing $(pwd)"
 
 cd build/soong
 
-git fetch https://github.com/PixelOS-AOSP/android_build_soong 173bd39389e5d1d91b27db80000f3479dbaf7add
-git cherry-pick 173bd39389e5d1d91b27db80000f3479dbaf7add
+git fetch https://github.com/PixelOS-AOSP/android_build_soong 173bd39389e5d1d91b27db80000f3479dbaf7add || true
+git cherry-pick 173bd39389e5d1d91b27db80000f3479dbaf7add || true
 
-git fetch https://github.com/15168142/build_soong-pos b299e2b78014e79edbf017db5beb28e995ec0a80
-git cherry-pick b299e2b78014e79edbf017db5beb28e995ec0a80
+git fetch https://github.com/15168142/build_soong-pos b299e2b78014e79edbf017db5beb28e995ec0a80 ||  true
+git cherry-pick b299e2b78014e79edbf017db5beb28e995ec0a80 || true
 
 cd ../..
 
@@ -34,7 +34,7 @@ echo "debug - trees $(pwd)"
 git clone https://github.com/crdroidandroid/android_device_samsung_a52q device/samsung/a52q
 git clone https://github.com/crdroidandroid/android_device_samsung_sm7125-common device/samsung/sm7125-common
 git clone https://github.com/matei9/android_kernel_samsung_sm7125 kernel/samsung/sm7125
-git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_sm7125-common vendor/samsung/sm7125-common
+git clone https://github.com/TheMuppets/proprietary_vendor_samsung_sm7125-common vendor/samsung/sm7125-common
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_a52q vendor/samsung/a52q
 git clone https://github.com/LineageOS/android_hardware_samsung_slsi_nfc hardware/samsung_slsi/nfc -b lineage-23.2
 
