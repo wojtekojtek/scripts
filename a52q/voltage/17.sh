@@ -22,10 +22,13 @@ fi
 
 echo "debug - trees $(pwd)"
 git clone https://github.com/crdroidandroid/android_device_samsung_a52q device/samsung/a52q
-git clone https://github.com/matei9/android_device_samsung_sm7125-common device/samsung/sm7125-common
+git clone https://github.com/crdroidandroid/android_device_samsung_sm7125-common device/samsung/sm7125-common
 git clone https://github.com/matei9/android_kernel_samsung_sm7125 kernel/samsung/sm7125
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_sm7125-common vendor/samsung/sm7125-common
 git clone https://github.com/crdroidandroid/proprietary_vendor_samsung_a52q vendor/samsung/a52q
+git clone https://github.com/LineageOS/android_hardware_samsung_slsi_nfc hardware/samsung_slsi/nfc -b lineage-23.2
+
+
 rm -rf hardware/samsung
 echo "debug - cloning hardware samsung $(pwd)"
 git clone https://github.com/LineageOS/android_hardware_samsung hardware/samsung -b lineage-24.0
