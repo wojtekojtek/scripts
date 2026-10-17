@@ -87,11 +87,11 @@ echo "6 $(pwd)"
 
 echo "debug - apply tee workaround $(pwd)"
 echo "7 $(pwd)"
-mkdir -p system/sepolicy/private
+#mkdir -p system/sepolicy/private
 echo "8 $(pwd)"
-if ! grep -q 'allow tee gatekeeper_vendor_data_file:dir' system/sepolicy/private/tee.te 2>/dev/null; then
-    printf '\nallow tee gatekeeper_vendor_data_file:dir rw_dir_perms;\nallow tee gatekeeper_vendor_data_file:file create_file_perms;\n' >> system/sepolicy/private/tee.te
-fi
+#if ! grep -q 'allow tee gatekeeper_vendor_data_file:dir' system/sepolicy/private/tee.te 2>/dev/null; then
+#    printf '\nallow tee gatekeeper_vendor_data_file:dir rw_dir_perms;\nallow tee gatekeeper_vendor_data_file:file create_file_perms;\n' >> system/sepolicy/private/tee.te
+#fi
 echo "9 $(pwd)"
 
 echo "debug - add maintainer string $(pwd)"
