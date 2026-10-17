@@ -102,6 +102,8 @@ if [ ! -f "$OVERLAY_DIR/voltage_strings.xml" ]; then
         > "$OVERLAY_DIR/voltage_strings.xml"
 fi
 
+sed -i 's|<string name="voltage_maintainer">Unofficial Maintainer</string>|<string name="voltage_maintainer">wojtekojtek</string>|' ./packages/apps/Settings/res/values/voltage_strings.xml || true
+
 echo "debug - build $(pwd)"
 source build/envsetup.sh
 croot
